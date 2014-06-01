@@ -1,5 +1,5 @@
 module MoviesHelper
-  def movies_th_class(url)
-    url == request.fullpath ? 'highlight' : ''
+  def movies_th_class(order_param)
+    request.fullpath.include?(order_param) ? 'highlight' : ''
   end
 end
