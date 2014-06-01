@@ -5,6 +5,9 @@ class MoviesController < ApplicationController
     @sort = params[:sort]
     @ratings = params[:ratings].try(:keys) || @all_ratings
     @movies = Movie.order(@sort).with_ratings(@ratings)
+    session[:previous_settings] = {}
+    session[:previous_settings].merge!(sort: @sort) unless @sort.blank?
+    session[:previous_settings].merge!(ratings: params[:ratings]) unless @ratings.blank?
   end
 
   def show
