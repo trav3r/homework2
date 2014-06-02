@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  RATINGS = %w(G PG PG-13 R)
+  RATINGS = %w(G PG PG-13 R NC-17)
  
   validates :title, presence: true
   validates :rating, presence: true, inclusion: RATINGS
