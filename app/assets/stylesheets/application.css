@@ -59,6 +59,18 @@ form label {
   font-weight: bold;
   color: maroon;
 }
+form input[type='text'], form textarea {
+  width: 450px;
+}
+form textarea {
+  height: 70px
+}
+form span.error {
+  color: red;
+  display: block;
+  margin-bottom: 10px;
+  width: 450px;
+}
 table#movies th.highlight {
   background-color: yellow;
 }
