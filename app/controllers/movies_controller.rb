@@ -1,10 +1,11 @@
 class MoviesController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
     @all_ratings = Movie::RATINGS
     @sort = params[:sort]
     @ratings = params[:ratings].try(:keys) || @all_ratings
-    @movies = Movie.order(@sort).with_ratings(@ratings)
+    @movies = Movie.order(sort_column + " " + sort_direction).with_ratings(@ratings)
     session[:previous_settings] = {}
     session[:previous_settings].merge!(sort: @sort) unless @sort.blank?
     session[:previous_settings].merge!(ratings: params[:ratings]) unless @ratings.blank?
@@ -59,5 +60,12 @@ class MoviesController < ApplicationController
     params[:movie].permit(:title, :rating, :release_date, :description)
   end
 
+  def sort_column
+    Movie.column_names.include?(params[:sort]) ? params[:sort] : 'title'
+  end
+
+  def sort_direction
+   %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 end
 
