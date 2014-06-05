@@ -5,13 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
-  <h1 class="title">Imdb</h1>
-  <div id="main">
-    <%= render 'flash' %>
-    <%= yield %>
-  </div>
+	<header class="navbar">
+		<div class="navbar-inner">
+		  <div class="container">
+  		  <h2 class="title pull-left">Imdb</h2>
+  		  <nav>
+  			  <ul class="nav pull-right">
+  				  <li><%= link_to "DVD & Blu-Ray", '#' %></li>
+  				  <li><%= link_to "Best Films-250", '#'%></li>
+  				  <li><%= link_to "Sign in", '#'%></li>
+  				  <li><%= link_to "Help", '#'%></li>
+  			  </ul>
+  		  </nav>
+      </div>
+    </div>
+  </header>
 
+  <div id="main">
+    <div class='container'>
+      <%= render 'flash' %>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
