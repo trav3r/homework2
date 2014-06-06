@@ -5,38 +5,73 @@
 <%= render 'movies/movie', movie: @sample_movie %>
 
 <hr>
+<div class="bs-docs-example">
+  <div id='mycarousel' class='carousel slide'>
+    <div class='carousek-inner'>
+      <div class="ative item">
+        <img src="../assets/images/1.jpg" alt>
+        <div class='container'>
+          <div class='carousel-caption'>
+            <h1>Move List</h1>
+            <p class='lead'>
+              List of the best films on our site. And also reviews movies and reviews
+            </p>
+            <a class='btn btn-large btn-primary' href='#'>Read more</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="../assets/images/2.jpg" alt>
+        <div class='container'>
+          <div class='carousel-caption'>
+            <h1>Anime List</h1>
+            <p class='lead'>
+              List of the best anime on our site. And also reviews movies and reviews
+            </p>
+            <a class='btn btn-large btn-primary' href='#'>Learn more</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="../assets/images/3.jpg" alt>
+        <div class='container'>
+          <div class='carousel-caption'>
+            <h1>Gallery List</h1>
+            <p class='lead'>
+              Сan see photos of celebrities, and photographs on the set of films or the anime
+            </p>
+            <a class='btn btn-large btn-primary' href='#'>Browse gallery</a>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div> 
+  <a class="carousel-control left" href="#mycarousel" data-slide="prev"><</a>
+  <a class="carousel-control right" href="#mycarousel" data-slide="next">></a>
+</div>
 
 <div class='container marketing'>
   <div class='row'>
     <div class='span4'>
-      <h2>asd as asd asd asd asd asd</h2>
-      <p>sad asd asd asd asd asd asd asdas das
-        asd asd asdas dsadas d
-        asd sad asdasdasdasd sad asdasdasdasd
-        sa dasdas dasdasdasd
-        asdasd
+      <h2>Opening This Week</h2>
+      <p>
+        The most popular movies this week.
       </p>
-      <p><%= link_to 'Link', '#', class: 'btn' %></p>
+      <p><%= link_to 'View details', '#', class: 'btn' %></p>
     </div>
     <div class='span4'>
-      <h2>asd as asd asd asd asd asd</h2>
-      <p>sad asd asd asd asd asd asd asdas das
-        asd asd asdas dsadas d
-        asd sad asdasdasdasd sad asdasdasdasd
-        sa dasdas dasdasdasd
-        asdasd
+      <h2>Box Office</h2>
+      <p>
+        The best films of the weekend charges.
       </p>
-      <p><%= link_to 'Link', '#', class: 'btn' %></p>
+      <p><%= link_to 'View details', '#', class: 'btn' %></p>
     </div>
     <div class='span4'>
-      <h2>asd as asd asd asd asd asd</h2>
-      <p>sad asd asd asd asd asd asd asdas das
-        asd asd asdas dsadas d
-        asd sad asdasdasdasd sad asdasdasdasd
-        sa dasdas dasdasdasd
-        asdasd
+      <h2>Coming Soon</h2>
+      <p>
+        The most anticipated movies this month.
       </p>
-      <p><%= link_to 'Link', '#', class: 'btn' %></p>
+      <p><%= link_to 'View details', '#', class: 'btn' %></p>
     </div>
   </div>
 </div>

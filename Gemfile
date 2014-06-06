@@ -9,9 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-group :assets do
-  gem 'twitter-bootstrap-rails'
-end
+
+gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 
 gem 'simple_form'
