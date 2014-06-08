@@ -95,6 +95,13 @@ input[type="checkbox"] {
 
 .carousel {
   margin-bottom: 60px;
+  .item {
+  height: 500px;
+  }
+  .container {
+  position: relative;
+  z-index: 9;
+  }
 }
 
 .carousel-inner {
@@ -103,46 +110,39 @@ input[type="checkbox"] {
   overflow: hidden;
 }
 
-.carousel .item {
-  height: 500px;
-}
-
-.carousel .container {
-  position: relative;
-  z-index: 9;
-}
-
 .carousel-caption {
   background-color: transparent;
   position: static;
-  max-width: 550px;
+  max-width: 350px;
   padding: 0 20px;
-  margin-top: 200px;
-}
-
-.carousel-caption .lead {
+  margin-top: 310px;
+  h1 {
+    color: yellow;
+  }
+  .lead {
   margin: 0;
   line-height:  1.25;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0,.4);
-}
-
-.carousel-caption .btn {
+  }
+  .btn {
   margin-top:  10px;
+  }
 }
 
 .carousel-control {
   height: 80px;
   margin-top: 0;
-  font-size: 120px;
+  font-size: 90px;
   text-shadow: 0 1px 1px rgba(0,0,0,.4);
   background-color: transparent;
   border: 0;
-}
-
-.carousel-control .right {
-  right: 15px;
-  left: auto;
+  z-index: 100;
+  left: 10px;
+  top: 45%;
+  &.right {
+    right: 35px;
+  }
 }
 
 .carousel img {
@@ -151,14 +151,4 @@ input[type="checkbox"] {
   left: 0;
   min-width: 100%;
   height: 500px;
-}
-
-.bs-docs-example {
-  position: relative;
-  margin: 15px 0;
-  padding: 39px 19px 14px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
 }
