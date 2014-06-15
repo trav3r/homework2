@@ -1,9 +1,13 @@
 <h1>Welcome!</h1>
 <hr>
 <%= link_to "See all movies", movies_path %>
+
 <%= render 'movies/movie', movie: @sample_movie %>
+
 <hr>
+
 <%= render 'welcome/carousel' %>
+
 <div class='container marketing'>
   <div class='row'>
     <div class='span4'>
@@ -31,4 +35,5 @@
 </div>
 
 <%= render 'welcome/slidebutton' %>
+
 <%= render 'welcome/footer' %>
