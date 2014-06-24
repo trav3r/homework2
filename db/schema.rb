@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528064816) do
+ActiveRecord::Schema.define(version: 20140624085642) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 20140528064816) do
     t.datetime "release_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "poster"
+    t.integer  "user_id"
+    t.boolean  "published"
   end
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "email",                                           null: false
+    t.string   "encrypted_password", limit: 128,                  null: false
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128,                  null: false
+    t.string   "role",               limit: 8,   default: "user"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

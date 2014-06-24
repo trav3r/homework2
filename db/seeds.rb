@@ -1,3 +1,6 @@
+user = User.create! email: 'user@example.com', password: 'asdasd'
+admin = User.create! email: 'admin@example.com', password: 'asdasd'
+admin.update_attribute(:role, 'admin')
 [
   ["Star Wars", "PG", "1977-05-02 00:00:00 UTC"],
   ["Aladdin", "G", "1992-11-25 00:00:00 UTC"],
@@ -11,5 +14,6 @@
   ["Raiders of the Lost Ark", "PG", "1981-06-12 00:00:00"],
   ["Chicken Run", "G", "2000-06-21 00:00:00"]
 ].each do |(title, rating, date)|
-  Movie.create! title: title, rating: rating, release_date: DateTime.parse(date)
+  Movie.create! title: title, rating: rating, release_date: DateTime.parse(date),
+                user: [user, admin].shuffle.first
 end
