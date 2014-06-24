@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     @all_ratings = Movie::RATINGS
     @sort = params[:sort]
     @ratings = params[:ratings].try(:keys) || @all_ratings
-    @movies = Movie.order(sort_column + " " + sort_direction).with_ratings(@ratings)
+    @movies = Movie.for_user(current_user).order(sort_column + " " + sort_direction).with_ratings(@ratings)
     session[:previous_settings] = {}
     session[:previous_settings].merge!(sort: @sort) unless @sort.blank?
     session[:previous_settings].merge!(ratings: params[:ratings]) unless @ratings.blank?
@@ -31,10 +31,12 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = find_movie
+    return not_found unless @movie.user == current_user
   end
 
   def update
     @movie = find_movie
+    return not_found unless @movie.user == current_user
     if @movie.update_attributes(movie_params)
       flash[:notice] = "#{@movie.title} was successfully updated."
       redirect_to @movie
@@ -52,12 +54,16 @@ class MoviesController < ApplicationController
 
   private
 
+  def not_found
+    render :file => "#{Rails.root}/public/404", formats: [:html], status: :not_found, layout: false
+  end
+
   def find_movie
-    Movie.find(params[:id])
+    Movie.for_user(current_user).find(params[:id])
   end
 
   def movie_params
-    params[:movie].permit(:title, :rating, :release_date, :description)
+    params[:movie].permit(:title, :rating, :release_date, :description, :poster, :published)
   end
 
   def sort_column
@@ -68,4 +74,3 @@ class MoviesController < ApplicationController
    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end
-

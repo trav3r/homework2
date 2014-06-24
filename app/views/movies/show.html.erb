@@ -1,5 +1,7 @@
 <%= render 'movie', movie: @movie %>
 
-<%= link_to 'Edit', [:edit, @movie] %>
-<%= button_to 'Delete', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back to movie list', movies_path(session[:previous_settings]) %>
+<% if @movie.user == current_user %>
+	<%= link_to 'Edit', [:edit, @movie], class: 'btn' %>
+  <%= button_to 'Delete', @movie, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
+<% end %>
+<%= link_to 'Back to movie list', movies_path(session[:previous_settings]), class: 'btn' %> 
