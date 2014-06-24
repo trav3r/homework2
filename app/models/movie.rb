@@ -8,9 +8,9 @@ class Movie < ActiveRecord::Base
   belongs_to :user
   before_update :unpablish_for_usual_users
 
-  scope :for_user, ->(user) do
+  scope :for_user, ->(user) do 
     if user && !user.admin?
-      where "movies.published = 't' OR (movies.published = 'f' AND movies.user_id = ?)", user.id
+      where("movies.published = 't' OR movies.published = 'f' AND movies.user_id = ?", user.id)
     end
   end
 
