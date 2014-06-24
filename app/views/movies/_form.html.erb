@@ -2,7 +2,10 @@
   <%= f.input :title %>
   <%= f.input :rating, collection: Movie::RATINGS %>
   <%= f.input :release_date, as: :text %>
-
+  <% if current_user && current_user.admin? %>
+   <%= f.input :published, as: :boolean %>
+  <% end %>
+  
   <%= f.submit 'Submit' %>
 <% end %>
 

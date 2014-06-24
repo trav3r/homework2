@@ -7,7 +7,7 @@
     <%= rating %>
     <%= check_box_tag "ratings[#{rating}]", '1', @ratings.include?(rating) %>
   <% end %>
-  <%= submit_tag 'Refresh' %>
+  <%= submit_tag 'Refresh', class: 'btn'%>
 <% end %>
 
 <table id='movies'>
@@ -20,19 +20,25 @@
       <th>
         <%= sortable 'release_date', 'Release Date' %>
       </th>
+      <th>User</th>
       <th>More Info</th>
     </tr>
   </thead>
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.title %></td>
+        <td class="<%= movie.published? ? '' : 'pending' %>"><%= movie.title %></td>
         <td><%= movie.rating %></td>
         <td><%= movie.release_date %></td>
+        <td class="<%= highlingt_if_movie(movie) %>"><%= movie.user.email %></td>
         <td><%= link_to "More about #{movie.title}", movie_path(movie) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Add new movie', new_movie_path %>
+<br/>
+<% if current_user %>
+  <%= link_to 'Add new movie', new_movie_path, class: 'btn' %>
+  <br/>
+  <br/>
+<% end %>
